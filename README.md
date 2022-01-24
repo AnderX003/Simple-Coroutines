@@ -31,5 +31,40 @@ Your action can be a delegate that has no parameters and does not return a value
 | `WaitForSeconds(float seconds, Action action)` | Waits for the given amount of `seconds` using scaled time |
 | `WaitForCondition(Func<bool> condition, Action action)` | Waits until the `condition` is true |
 
-## Examples
-Comming soon
+## Example
+Let's say you need a method that will disable an object after one second. Here's how you can do it with coroutines:
+
+```csharp
+using System.Collections;
+using UnityEngine;
+
+public class SimpleCoroutinesExample : MonoBehaviour
+{
+    private void SomeMethod()
+    {
+        StartCoroutine(EnableAfterSecond());
+    }
+
+    private IEnumerator EnableAfterSecond()
+    {
+        yield return new WaitForSeconds(1f);
+        enabled = true;
+    }
+}
+```
+
+Here's how you can do it with Simple Coroutines:
+
+```csharp
+using UnityEngine;
+
+public class SimpleCoroutinesExample : MonoBehaviour
+{
+    private void SomeMethod()
+    {
+        this.WaitForSeconds(1f, () => enabled = true);
+    }
+}
+```
+
+As you can see, by using Simple Coroutines you can make it much shorter and you don't have to create an individual method.
