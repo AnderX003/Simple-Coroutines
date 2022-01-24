@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public static class SimpleCoroutines
 {
@@ -62,22 +61,14 @@ public static class SimpleCoroutines
     private static IEnumerator WaitForSeconds(float seconds, Action action)
     {
         if (action == null)
+        {
             yield break;
+        }
+        
         yield return new WaitForSeconds(seconds);
         action();
     }
-
-    public static void WaitForWebRequest(this MonoBehaviour behaviour, string link, Action action)
-    {
-        behaviour.StartCoroutine(WaitForWebRequest(link, action));
-    }
-
-    private static IEnumerator WaitForWebRequest(string link, Action action)
-    {
-        yield return new UnityWebRequest(link);
-        action();
-    }
-
+    
     public static void WaitForCondition(this MonoBehaviour behaviour, Func<bool> condition, Action action)
     {
         behaviour.StartCoroutine(WaitForCondition(condition, action));
