@@ -5,9 +5,9 @@ using UnityEngine;
 public static class SimpleCoroutines
 {
 
-    public static void WaitForFrame(this MonoBehaviour behaviour, Action action)
+    public static Coroutine WaitForFrame(this MonoBehaviour behaviour, Action action)
     {
-        behaviour.StartCoroutine(WaitForFrame(action));
+        return behaviour?.StartCoroutine(WaitForFrame(action));
     }
 
     private static IEnumerator WaitForFrame(Action action)
@@ -16,9 +16,9 @@ public static class SimpleCoroutines
         action();
     }
 
-    public static void WaitForFrames(this MonoBehaviour behaviour, int frames, Action action)
+    public static Coroutine WaitForFrames(this MonoBehaviour behaviour, int frames, Action action)
     {
-        behaviour.StartCoroutine(WaitForFrames(frames, action));
+        return behaviour?.StartCoroutine(WaitForFrames(frames, action));
     }
 
     private static IEnumerator WaitForFrames(int frames, Action action)
@@ -31,9 +31,9 @@ public static class SimpleCoroutines
         action();
     }
 
-    public static void WaitForFixedUpdate(this MonoBehaviour behaviour, Action action)
+    public static Coroutine WaitForFixedUpdate(this MonoBehaviour behaviour, Action action)
     {
-        behaviour.StartCoroutine(WaitForFixedUpdate(action));
+        return behaviour?.StartCoroutine(WaitForFixedUpdate(action));
     }
 
     private static IEnumerator WaitForFixedUpdate(Action action)
@@ -42,9 +42,9 @@ public static class SimpleCoroutines
         action();
     }
 
-    public static void WaitForEndOfFrame(this MonoBehaviour behaviour, Action action)
+    public static Coroutine WaitForEndOfFrame(this MonoBehaviour behaviour, Action action)
     {
-        behaviour.StartCoroutine(WaitForEndOfFrame(action));
+        return behaviour?.StartCoroutine(WaitForEndOfFrame(action));
     }
 
     private static IEnumerator WaitForEndOfFrame(Action action)
@@ -53,9 +53,9 @@ public static class SimpleCoroutines
         action();
     }
 
-    public static void WaitForSeconds(this MonoBehaviour behaviour, float seconds, Action action)
+    public static Coroutine WaitForSeconds(this MonoBehaviour behaviour, float seconds, Action action)
     {
-        behaviour.StartCoroutine(WaitForSeconds(seconds, action));
+        return behaviour?.StartCoroutine(WaitForSeconds(seconds, action));
     }
 
     private static IEnumerator WaitForSeconds(float seconds, Action action)
@@ -64,14 +64,14 @@ public static class SimpleCoroutines
         {
             yield break;
         }
-        
+
         yield return new WaitForSeconds(seconds);
         action();
     }
-    
-    public static void WaitForCondition(this MonoBehaviour behaviour, Func<bool> condition, Action action)
+
+    public static Coroutine WaitForCondition(this MonoBehaviour behaviour, Func<bool> condition, Action action)
     {
-        behaviour.StartCoroutine(WaitForCondition(condition, action));
+        return behaviour?.StartCoroutine(WaitForCondition(condition, action));
     }
 
     private static IEnumerator WaitForCondition(Func<bool> condition, Action action)
