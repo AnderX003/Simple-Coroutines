@@ -20,6 +20,7 @@ public class SimpleCoroutinesExample : MonoBehaviour
 ```
 
 Your action can be a delegate that has no parameters and does not return a value.
+Every SimpleCoroutines method returns started coroutine.
 
 ## Available Methods
 | Method | Explanation |
@@ -30,6 +31,7 @@ Your action can be a delegate that has no parameters and does not return a value
 | `WaitForEndOfFrame(Action action)` | Waits until the end of the frame after Unity has rendererd every Camera and GUI, just before displaying the frame on screen |
 | `WaitForSeconds(float seconds, Action action)` | Waits for the given amount of `seconds` using scaled time |
 | `WaitForCondition(Func<bool> condition, Action action)` | Waits until the `condition` is true |
+| `WaitForYieldInstruction(this MonoBehaviour behaviour, YieldInstruction instruction, Action action)` | Waits for the given YieldInstruction instruction `instruction` |
 
 ## Example
 Let's say you need a method that will disable an object after one second. Here's how you can do it with coroutines:
